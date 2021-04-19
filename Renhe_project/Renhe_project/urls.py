@@ -15,7 +15,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from django.conf.urls import include
+#from item_app import views
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('', views.IndexView.as_view()),
+    path('case_app/',include('case_app.urls',namespace='case_app')),
+    path('casememo_app/',include('casememo_app.urls',namespace='casememo_app')),
+    path('file_app/',include('file_app.urls',namespace='file_app')),
+    path('finance_app/',include('finance_app.urls',namespace='finance_app')),
+    path('group_app/',include('group_app.urls',namespace='group_app')),
+    path('member_app/',include('member_app.urls',namespace='member_app')),
+    path('scholorship_app/',include('scholorship_app.urls',namespace='scholorship_app')),
+    path('school_app/',include('school_app.urls',namespace='school_app')),
 ]
