@@ -40,14 +40,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'case_app',
-    'casememo_app',
     'file_app',
     'finance_app',
-    'group_app',
     'member_app',
     'scholorship_app',
     'school_app',
     'index_app',
+    'student_app',
     'crispy_forms',
 
 ]
