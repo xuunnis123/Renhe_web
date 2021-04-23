@@ -11,3 +11,23 @@ class StudentListView(ListView):
     context_object_name='student'
     model= models.Student
     template_name='student_app/student_list.html'
+
+class StudentDetailView(DetailView):
+    
+    context_object_name='student_detail'
+    model=models.Student
+    template_name='student_app/student_detail.html'
+
+
+class StudentCreateView(CreateView):
+    fields=('case_id','name','phone','school','address','is_end','memo',)
+    model=models.Student
+
+   
+class StudentUpdateView(UpdateView):
+    fields =('name','principal')
+    model=models.Student
+
+class StudentDeleteView(DeleteView):
+    model=models.Student
+    success_url= reverse_lazy("student_app:list")
