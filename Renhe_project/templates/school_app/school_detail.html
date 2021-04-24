@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="jumbotron">
+    <h1>學校</h1>
+    <h2>學校資訊</h2>
+    <p>校名: {{school_detail.name}}</p>
+    <p>負責人: {{school_detail.represent_person_name }} </p>
+    <p>負責人電話:{{school_detail.represent_person_phone}}</p>
+    <p>備註:{{school_detail.memo}}</p>
+    
+   
+</div>
+<div class="container">
+    <p><a class='btn btn-warning' href="{% url 'school_app:update' pk=school_detail.pk %}">更新</a>
+        <a class='btn btn-danger' href="{% url 'school_app:delete' pk=school_detail.pk %}">刪除</a>
+    <a class='btn btn-secondary' href="{% url 'school_app:list' %}">取消</a></p>
+</div>
+{% endblock %}

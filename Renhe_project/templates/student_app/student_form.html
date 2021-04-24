@@ -14,7 +14,11 @@
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" class="btn btn-primary" value="提交">
-    <p><a class='btn btn-secondary' href="{% url 'student_app:list' %}">取消</a></p> 
+    {% if not form.instance.pk %}
+    <a class='btn btn-secondary' href="{% url 'student_app:list' %}">取消</a>
+    {% else %}
+    <a class='btn btn-secondary' href="{% url 'student_app:detail' pk=form.instance.pk %}">取消</a>
+    {% endif %}
 </form>
 
 {% endblock%}

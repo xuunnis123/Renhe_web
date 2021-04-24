@@ -1,0 +1,26 @@
+{% extends "base.html"%}
+
+{% block body_block %}
+<h1>學校列表</h1>
+<table class="table">
+<thead class="table-dark">
+        <th>校名</th>
+        <th>負責人</th>
+        <th>負責人電話</th>
+        <th>備註</th>
+       
+</thead>
+    {% for uni_school in school %}
+    <tr>
+        <td><a href="{% url 'school_app:detail' pk=uni_school.pk %}">{{ uni_school.name }}</a></td>
+        <td>{{ uni_school.represent_person_name }}</td>
+        <td>{{ uni_school.represent_person_phone }}</td>
+        <td>{{ uni_school.memo }}</td>
+        
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
+

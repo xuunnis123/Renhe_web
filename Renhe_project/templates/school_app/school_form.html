@@ -4,9 +4,9 @@
 {% load crispy_forms_tags %}
 <h1>
     {% if not form.instance.pk %}
-    建立個案
+    新增學校
     {% else %}
-    更新個案
+    更新學校資訊
     {% endif %}
 </h1>
 
@@ -14,11 +14,10 @@
     {% csrf_token %}
     {{ form|crispy }}
     <input type="submit" class="btn btn-primary" value="提交"> 
-    
     {% if not form.instance.pk %}
-    <a class='btn btn-secondary' href="{% url 'case_app:list' %}">取消</a>
+    <a class='btn btn-secondary' href="{% url 'school_app:list' %}">取消</a>
     {% else %}
-    <a class='btn btn-secondary' href="{% url 'case_app:detail' pk=form.instance.pk %}">取消</a>
+    <a class='btn btn-secondary' href="{% url 'school_app:detail' pk=form.instance.pk %}">取消</a>
     {% endif %}
 </form>
 

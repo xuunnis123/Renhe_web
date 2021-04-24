@@ -7,7 +7,7 @@ class School(models.Model):
     name=models.CharField(max_length=256)
     represent_person_name=models.CharField(max_length=256)
     represent_person_phone=models.CharField(max_length=256)
-    memo=models.CharField(max_length=256)
+    memo=models.TextField(max_length=512)
     
    
 
