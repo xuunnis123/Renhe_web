@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="jumbotron">
+    <h1>會員</h1>
+    <h2>會員基本資訊</h2>
+    <p>姓名: {{member_detail.name}}</p>
+    <p>身分證: {{member_detail.id_number }} </p>
+    <p>職位:{{member_detail.title}}</p>
+    <p>電話:{{member_detail.phone}}</p>
+    <p>地址:{{member_detail.address}}</p>
+    <p>介紹人:{{member_detail.intro_by}}</p>
+    <p>加入日期:{{member_detail.created_at}}</p>
+    <p>會員失效日期:{{member_detail.expired_at}}</p>
+    <p>會員身份:{{member_detail.is_member_now}}</p>
+    <p>會費繳納:{{member_detail.is_donate}}</p>
+    
+</div>
+<div class="container">
+    <p><a class='btn btn-warning' href="{% url 'member_app:update' pk=member_detail.pk %}">更新</a>
+        <a class='btn btn-danger' href="{% url 'member_app:delete' pk=member_detail.pk %}">刪除</a>
+    <a class='btn btn-secondary' href="{% url 'member_app:list' %}">取消</a></p>
+</div>
+{% endblock %}
+<h1></h1>

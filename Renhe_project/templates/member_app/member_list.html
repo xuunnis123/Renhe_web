@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+
+{% block body_block %}
+<h1>會員列表</h1>
+<table class="table">
+<thead class="table-dark">
+        <th>姓名</th>
+        <th>身分證</th>
+        <th>職位</th>
+        <th>電話</th>
+        <th>地址</th>
+        <th>介紹人</th>
+        <th>加入日期</th>
+        <th>會員失效日期</th>
+        <th>會員身份</th>
+        <th>會費繳納</th>
+ 
+
+</thead>
+    {% for uni_member in member %}
+    <tr>
+        <td><a href="{% url 'member_app:detail' pk=uni_member.pk %}">{{ uni_member.name }}</a></td>
+        <td>{{ uni_member.id_number }}</td>
+        <td>{{ uni_member.title }}</td>
+        <td>{{ uni_member.phone }}</td>
+        <td>{{ uni_member.address }}</td>
+        <td>{{ uni_member.intro_by }}</td>
+        <td>{{ uni_member.created_at }}</td>
+        <td>{{ uni_member.expired_at }}</td>
+        <td>{{ uni_member.is_member_now }}</td>
+        <td>{{ uni_member.is_donate }}</td>
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
