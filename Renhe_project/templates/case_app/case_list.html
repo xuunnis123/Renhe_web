@@ -1,0 +1,54 @@
+{% extends "base.html"%}
+
+{% block body_block %}
+<h1>個案列表</h1>
+<table class="table">
+<thead class="table-dark">
+        <th>學生姓名</th>
+        <th>電話</th>
+        <th>學校</th>
+        <th>資助項目</th>
+        <th>獎學金</th>
+        <th>獎學金金額</th>
+        <th>目前總資助金額</th>
+        <th>個案情況</th>
+        <th>訪視表</th>
+        <th>訪視照片</th>
+        <th>個案開始日期</th>
+        <th>個案結束日期</th>
+</thead>
+    {% for uni_case in case %}
+    <tr>
+        <td><a href="">{{ uni_case.name }}</a></td>
+        <td>{{ uni_case.phone }}</td>
+        <td>{{ uni_case.school }}</td>
+        <td>{{ uni_case.contribute_context }}</td>
+        <td>{{ uni_case.is_scholorship }}</td>
+        <td>{{ uni_case.scholorship_amount }}</td>
+        <td>{{ uni_case.total_money }}</td>
+        <td>{{ uni_case.situation }}</td>
+        <td>{{ uni_case.visited_form }}</td>
+        <td>{{ uni_case.visited_photos }}</td>
+        <td>{{ uni_case.start_date }}</td>
+        <td>{{ uni_case.end_date }}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
+
+
+name=models.CharField(max_length=256)
+phone=models.CharField(max_length=256)
+school=models.CharField(max_length=256)
+contribute_context=models.TextField(max_length=256) #related from outcome
+is_scholorship=models.BooleanField(null=False,default=False)
+scholorship_amount=models.IntegerField(null=True)
+total_money=models.IntegerField(null=True)
+situation=models.TextField(max_length=512,default="無")
+visited_form=models.CharField(max_length=256,null=True)
+visited_photos=models.CharField(max_length=256,null=True)
+start_date=models.DateTimeField(null=True)
+end_date=models.DateTimeField(null=True)
+created_at=models.DateTimeField(auto_now=True)

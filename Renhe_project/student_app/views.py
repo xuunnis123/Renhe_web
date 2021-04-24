@@ -20,12 +20,12 @@ class StudentDetailView(DetailView):
 
 
 class StudentCreateView(CreateView):
-    fields=('case_id','name','phone','school','address','is_end','memo',)
+    fields=('case_id','name','phone','school','address','is_end','memo')
     model=models.Student
 
    
 class StudentUpdateView(UpdateView):
-    fields =('name','principal')
+    fields=('case_id','name','phone','school','address','is_end','memo',)
     model=models.Student
 
 class StudentDeleteView(DeleteView):

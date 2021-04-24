@@ -31,7 +31,7 @@ import os
 TEMPLATE_DIR=(os.path.join(BASE_DIR,"templates"))
 STATIC_DIR=os.path.join(BASE_DIR,"static") #如果有其他檔案
 # Application definition
-
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -120,8 +120,8 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
-
-USE_L10N = True
+DATETIME_FORMAT = '%Y-%m-%d' 
+USE_L10N = False
 
 USE_TZ = True
 

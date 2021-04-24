@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="jumbotron">
+    <h1>個案</h1>
+    <h2>個案資訊</h2>
+    <p>學生姓名: {{case_detail.name}}</p>
+    <p>電話: {{case_detail.phone }} </p>
+    <p>學校:{{case_detail.school}}</p>
+    <p>資助項目:{{case_detail.contribute_context}}</p>
+    <p>獎學金:{{case_detail.is_scholorship}}</p>
+    <p>獎學金金額:{{case_detail.scholorship_amount}}</p>
+    <p>目前總資助金額:{{case_detail.total_money}}</p>
+    <p>個案情況:{{case_detail.situation}}</p>
+    <p>訪視表:{{case_detail.visited_form}}</p>
+    <p>訪視照片:{{case_detail.visited_photos}}</p>
+    <p>個案開始日期:{{case_detail.start_date}}</p>
+    <p>個案結束日期:{{case_detail.end_date}}</p>
+
+    
+</div>
+<div class="container">
+    <p><a class='btn btn-warning' href="{% url 'case:update' pk=case_detail.pk %}">Update</a></p>
+</div>
+{% endblock %}

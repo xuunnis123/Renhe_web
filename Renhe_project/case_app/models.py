@@ -5,16 +5,16 @@ class Case(models.Model):
     name=models.CharField(max_length=256)
     phone=models.CharField(max_length=256)
     school=models.CharField(max_length=256)
-    contribute_context=models.CharField(max_length=256) #related from outcome
-    is_scholorship=models.BooleanField
-    scholorship_amount=models.IntegerField
-    total_money=models.IntegerField
-    situation=models.CharField
-    visited_form=models.CharField
-    visited_photos=models.CharField
-    start_date=models.DateTimeField
-    end_date=models.DateTimeField
-    created_at=models.DateTimeField
+    contribute_context=models.TextField(max_length=256) #related from outcome
+    is_scholorship=models.BooleanField(null=False,default=False)
+    scholorship_amount=models.IntegerField(null=True)
+    total_money=models.IntegerField(null=True)
+    situation=models.TextField(max_length=512,default="無")
+    visited_form=models.CharField(max_length=256,null=True)
+    visited_photos=models.CharField(max_length=256,null=True)
+    start_date=models.DateTimeField(null=True)
+    end_date=models.DateTimeField(null=True)
+    created_at=models.DateTimeField(auto_now=True)
     
 
     def __str__(self):
