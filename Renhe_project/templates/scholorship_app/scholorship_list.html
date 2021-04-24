@@ -1,0 +1,28 @@
+{% extends "base.html"%}
+
+{% block body_block %}
+<h1>獎學金列表</h1>
+<table class="table">
+<thead class="table-dark">
+        <th>姓名</th>
+        <th>申請名義</th>
+        <th>個案戶</th>
+        <th>學校</th>
+        <th>申請時間</th>
+        <th>獎學金金額</th>
+        
+</thead>
+    {% for uni_scholorship in scholorship %}
+    <tr>
+        <td><a href="{% url 'scholorship_app:detail' pk=uni_scholorship.pk %}">{{ uni_scholorship.name }}</a></td>
+        <td>{{ uni_scholorship.title }}</td>
+        <td>{{ uni_scholorship.is_case }}</td>
+        <td>{{ uni_scholorship.school }}</td>
+        <td>{{ uni_scholorship.datetime }}</td>
+        <td>{{ uni_scholorship.scholorship_amount }}</td>
+      
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}

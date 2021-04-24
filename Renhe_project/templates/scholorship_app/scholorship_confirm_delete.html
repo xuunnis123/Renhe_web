@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<h1>刪除 {{scholorship.title}}中 {{scholorship.name}}的獎學金紀錄?</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" class='btn btn-danger' value="刪除">
+    <a class="btn btn-secondary" href="{% url 'scholorship_app:detail' pk=scholorship.pk %}">取消</a>
+</form>
+
+{% endblock %}

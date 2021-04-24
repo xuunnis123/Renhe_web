@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="jumbotron">
+    <h1>獎學金細項</h1>
+    
+    <p>個案戶: {{scholorship_detail.is_case}}</p>
+    <p>申請名義: {{scholorship_detail.title }} </p>
+    <p>姓名:{{scholorship_detail.name}}</p>
+    <p>學校:{{scholorship_detail.school}}</p>
+    <p>申請時間:{{scholorship_detail.datetime}}</p>
+    <p>獎學金金額:{{scholorship_detail.scholorship_amount}}</p>
+   
+
+</div>
+<div class="container">
+    <p><a class='btn btn-warning' href="{% url 'scholorship_app:update' pk=scholorship_detail.pk %}">更新</a>
+        <a class='btn btn-danger' href="{% url 'scholorship_app:delete' pk=scholorship_detail.pk %}">刪除</a>
+    <a class='btn btn-secondary' href="{% url 'scholorship_app:list' %}">取消</a></p>
+</div>
+{% endblock %}
+<h1></h1>
