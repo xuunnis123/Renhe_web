@@ -1,0 +1,22 @@
+{% extends "base.html"%}
+
+{% block body_block %}
+<h1>檔案列表</h1>
+<table class="table">
+<thead class="table-dark">
+        <th>檔名</th>
+        <th>下載路徑</th>
+    
+</thead>
+    {% for uni_file in file %}
+    <tr>
+        <td><a href="{% url 'file_app:detail' pk=uni_file.pk %}">{{ uni_file.name }}</a></td>
+        <td><a href="{{ uni_file.data }}">{{ uni_file.data }}</a></td>
+        
+
+    </tr>
+    {% endfor %}
+
+</table>
+{% endblock %}
+

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block body_block %}
+<div class="jumbotron">
+    <h1>檔案</h1>
+    <h2>檔案資訊</h2>
+    <p>檔名: {{file_detail.name}}</p>
+    <p>下載路徑: <a href="{{ file_detail.data }}">{{file_detail.data }} </a></p>
+    
+    
+   
+</div>
+<div class="container">
+    <p><a class='btn btn-warning' href="{% url 'file_app:update' pk=file_detail.pk %}">更新</a>
+        <a class='btn btn-danger' href="{% url 'file_app:delete' pk=file_detail.pk %}">刪除</a>
+    <a class='btn btn-secondary' href="{% url 'file_app:list' %}">取消</a></p>
+</div>
+{% endblock %}

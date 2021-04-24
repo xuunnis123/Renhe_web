@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+<h1>刪除 {{file.name}}檔案嗎?</h1>
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" class='btn btn-danger' value="刪除">
+    <a class="btn btn-secondary" href="{% url 'file_app:detail' pk=file.pk %}">取消</a>
+</form>
+
+{% endblock %}
