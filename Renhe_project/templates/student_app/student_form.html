@@ -13,7 +13,8 @@
 <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
-    <input type="submit" class="btn btn-primary" value="Submit"> 
+    <input type="submit" class="btn btn-primary" value="提交">
+    <p><a class='btn btn-secondary' href="{% url 'student_app:list' %}">取消</a></p> 
 </form>
 
 {% endblock%}

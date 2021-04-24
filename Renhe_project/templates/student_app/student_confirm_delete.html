@@ -4,8 +4,8 @@
 <h1>Delete {{student.name}}?</h1>
 <form method="post">
     {% csrf_token %}
-    <input type="submit" class='btn btn-danger' value="Delete">
-    <a href="{% url 'student_app:detail' pk=student.pk %}">Cancel</a>
+    <input type="submit" class='btn btn-danger' value="刪除">
+    <a class="btn btn-secondary" href="{% url 'student_app:detail' pk=student.pk %}">取消</a>
 </form>
 
 {% endblock %}

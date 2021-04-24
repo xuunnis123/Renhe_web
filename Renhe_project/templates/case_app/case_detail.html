@@ -19,6 +19,8 @@
     
 </div>
 <div class="container">
-    <p><a class='btn btn-warning' href="{% url 'case:update' pk=case_detail.pk %}">Update</a></p>
+    <p><a class='btn btn-warning' href="{% url 'case_app:update' pk=case_detail.pk %}">更新</a>
+        <a class='btn btn-danger' href="{% url 'case_app:delete' pk=case_detail.pk %}">刪除</a>
+    <a class='btn btn-secondary' href="{% url 'case_app:list' %}">取消</a></p>
 </div>
 {% endblock %}

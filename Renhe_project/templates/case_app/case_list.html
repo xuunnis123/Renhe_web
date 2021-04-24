@@ -19,7 +19,7 @@
 </thead>
     {% for uni_case in case %}
     <tr>
-        <td><a href="">{{ uni_case.name }}</a></td>
+        <td><a href="{% url 'case_app:detail' pk=uni_case.pk %}">{{ uni_case.name }}</a></td>
         <td>{{ uni_case.phone }}</td>
         <td>{{ uni_case.school }}</td>
         <td>{{ uni_case.contribute_context }}</td>
@@ -38,17 +38,3 @@
 </table>
 {% endblock %}
 
-
-name=models.CharField(max_length=256)
-phone=models.CharField(max_length=256)
-school=models.CharField(max_length=256)
-contribute_context=models.TextField(max_length=256) #related from outcome
-is_scholorship=models.BooleanField(null=False,default=False)
-scholorship_amount=models.IntegerField(null=True)
-total_money=models.IntegerField(null=True)
-situation=models.TextField(max_length=512,default="無")
-visited_form=models.CharField(max_length=256,null=True)
-visited_photos=models.CharField(max_length=256,null=True)
-start_date=models.DateTimeField(null=True)
-end_date=models.DateTimeField(null=True)
-created_at=models.DateTimeField(auto_now=True)

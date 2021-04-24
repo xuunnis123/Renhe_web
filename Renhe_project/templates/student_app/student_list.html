@@ -12,7 +12,7 @@
 </thead>
     {% for uni_student in student %}
     <tr>
-        <td><a href="">{{ uni_student.name }}</a></td>
+        <td><a href="{% url 'student_app:update' pk=uni_student.pk %}">{{ uni_student.name }}</a></td>
         <td>{{ uni_student.phone }}</td>
         <td>{{ uni_student.school }}</td>
         <td>{{ uni_student.address }}</td>

@@ -1,19 +1,18 @@
 {% extends 'base.html' %}
 {% block body_block %}
 <div class="jumbotron">
-    <h1>Welcome to the Student Detail Page</h1>
-    <h2>Student details:</h2>
-    <p>Name: {{student_detail.name}}</p>
-    <p>Phone: {{student_detail.phone }} </p>
-    <p>Address:{{student_detail.Address}}</p>
-    <h3>Students:</h3>
+    <h1>學生</h1>
+    <h2>學生基本資訊</h2>
+    <p>姓名: {{student_detail.name}}</p>
+    <p>電話: {{student_detail.phone }} </p>
+    <p>地址:{{student_detail.Address}}</p>
+    
 
-    {% for student in student_detail.students.all %}
-    <p>{{student.name}} who is {{student.phone}} years old.</p>
-    {% endfor %}
 </div>
 <div class="container">
-    <p><a class='btn btn-warning' href="{% url 'student:update' pk=student_detail.pk %}">Update</a></p>
+    <p><a class='btn btn-warning' href="{% url 'student_app:update' pk=student_detail.pk %}">更新</a>
+        <a class='btn btn-danger' href="{% url 'student_app:delete' pk=student_detail.pk %}">刪除</a>
+    <a class='btn btn-secondary' href="{% url 'student_app:list' %}">取消</a></p>
 </div>
 {% endblock %}
 <h1></h1>

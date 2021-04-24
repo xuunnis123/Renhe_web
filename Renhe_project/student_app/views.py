@@ -22,12 +22,13 @@ class StudentDetailView(DetailView):
 class StudentCreateView(CreateView):
     fields=('case_id','name','phone','school','address','is_end','memo')
     model=models.Student
-
+    success_url= reverse_lazy("student_app:list")
    
 class StudentUpdateView(UpdateView):
+    print("Update")
     fields=('case_id','name','phone','school','address','is_end','memo',)
     model=models.Student
-
+    success_url= reverse_lazy("student_app:list")
 class StudentDeleteView(DeleteView):
     model=models.Student
     success_url= reverse_lazy("student_app:list")

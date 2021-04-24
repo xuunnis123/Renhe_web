@@ -22,11 +22,11 @@ class CaseDetailView(DetailView):
 class CaseCreateView(CreateView):
     fields=('name','phone','school','contribute_context','is_scholorship','scholorship_amount','total_money','situation','visited_form','visited_photos','start_date','end_date')
     model=models.Case
-
+    success_url= reverse_lazy("case_app:list")
 class CaseUpdateView(UpdateView):
     fields=('phone','school','contribute_context','is_scholorship','scholorship_amount','total_money','situation','visited_form','visited_photos','start_date','end_date')
     model=models.Case
-
+    success_url= reverse_lazy("case_app:list")
 class CaseDeleteView(DeleteView):
     model=models.Case
     success_url= reverse_lazy("case_app:list")
