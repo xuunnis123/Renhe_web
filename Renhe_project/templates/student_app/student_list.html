@@ -1,14 +1,14 @@
 {% extends "base.html"%}
 
 {% block body_block %}
-<h1>Welcome to a list of all the Students:</h1>
+<h1>學生列表</h1>
 <table class="table">
 <thead class="table-dark">
-    <th>Student Name</th>
-        <th>Phone</th>
-        <th>School</th>
-        <th>Address</th>
-        <th>Memo</th>
+        <th>學生姓名</th>
+        <th>電話</th>
+        <th>學校</th>
+        <th>地址</th>
+        <th>備註</th>
 </thead>
     {% for uni_student in student %}
     <tr>
