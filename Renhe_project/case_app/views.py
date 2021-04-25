@@ -30,3 +30,10 @@ class CaseUpdateView(UpdateView):
 class CaseDeleteView(DeleteView):
     model=models.Case
     success_url= reverse_lazy("case_app:list")
+
+def add_amount(is_scholorship):
+    if is_scholorship==True:
+        scholorship_amount='enable'
+        #add amount 
+        return True
+    else: return False
