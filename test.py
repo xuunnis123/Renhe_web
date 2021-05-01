@@ -3,8 +3,8 @@ from imgurpython import ImgurClient
 from rest_framework import authentication
 from datetime import datetime
 
-client_id = 'f5d8d83c2928f8b'
-client_secret = '8b4019a86b0dd790c35bc7c42dc1afb183b4d5e5'
+client_id = '###'
+client_secret = '###'
 
 
 def get_input(string):
