@@ -5,14 +5,14 @@ from school_app.models import School
 from case_app.models import Case
 # Create your models here.
 class Student(models.Model):
-    case_id=models.ForeignKey(Case,related_name='case_student',on_delete=models.CASCADE,default="")
-    name=models.CharField(max_length=256)
-    phone=models.CharField(max_length=256)
-    school=models.ForeignKey(School,related_name='school_student',on_delete=models.CASCADE)
+    case_id=models.ForeignKey(Case,related_name='case_student',on_delete=models.CASCADE,default="",verbose_name="個案編號")
+    name=models.CharField(verbose_name="姓名",max_length=256)
+    phone=models.CharField(verbose_name="電話",max_length=256)
+    school=models.ForeignKey(School,related_name='school_student',on_delete=models.CASCADE,verbose_name="學校")
     #school = models.ForeignKey(School,on_delete=models.CASCADE,null=True, blank=True)
-    address=models.CharField(max_length=256)
-    is_end=models.BooleanField(null=False,default=False)
-    memo=models.TextField(max_length=256)
+    address=models.CharField(verbose_name="地址",max_length=256)
+    is_end=models.BooleanField(verbose_name="已結案",null=False,default=False)
+    memo=models.TextField(verbose_name="備註",max_length=256)
     created_at=models.DateTimeField(auto_now=True)
     
    

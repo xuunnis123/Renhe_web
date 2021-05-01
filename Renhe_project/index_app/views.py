@@ -13,3 +13,4 @@ class IndexView(TemplateView):
         context = super(IndexView,self).get_context_data()
         context["phone"] = '測試中文'
         return context
+

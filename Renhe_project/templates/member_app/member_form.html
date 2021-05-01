@@ -1,7 +1,7 @@
 {% extends "base.html"%}
 
 {% block body_block %}
-{% load crispy_forms_tags %}
+{% load django_bootstrap5 %}
 <h1>
     {% if not form.instance.pk %}
     新增會員
@@ -12,7 +12,7 @@
 
 <form method="post">
     {% csrf_token %}
-    {{ form|crispy }}
+    {% bootstrap_form form %}
     <input type="submit" class="btn btn-primary" value="提交">
     {% if not form.instance.pk %}
     <a class='btn btn-secondary' href="{% url 'member_app:list' %}">取消</a>

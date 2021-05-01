@@ -31,7 +31,7 @@ import os
 TEMPLATE_DIR=(os.path.join(BASE_DIR,"templates"))
 STATIC_DIR=os.path.join(BASE_DIR,"static") #如果有其他檔案
 # Application definition
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,15 +39,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_bootstrap5',
     'case_app',
     'file_app',
     'finance_app',
+    'finance_app.templatetags',
     'member_app',
     'scholorship_app',
     'school_app',
     'index_app',
     'student_app',
-    'crispy_forms',
 
 ]
 

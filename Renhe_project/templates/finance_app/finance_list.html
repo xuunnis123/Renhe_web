@@ -1,5 +1,5 @@
 {% extends "base.html"%}
-
+{% load account_tags %}
 {% block body_block %}
 <h1>收支列表</h1>
 <table class="table">
@@ -29,4 +29,5 @@
     {% endfor %}
 
 </table>
+<b>Test_Tag: {% total_list %}</b>
 {% endblock %}
