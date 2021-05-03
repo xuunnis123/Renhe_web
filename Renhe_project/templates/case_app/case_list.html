@@ -21,7 +21,7 @@
         <th>個案開始日期</th>
         <th>個案結束日期</th>
 </thead>
-    {% for uni_case in case %}
+    {% for uni_case in case.qs %}
     <tr>
         <td><a href="{% url 'case_app:detail' pk=uni_case.pk %}">{{ uni_case.name }}</a></td>
         <td>{{ uni_case.phone }}</td>

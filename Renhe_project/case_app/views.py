@@ -6,6 +6,9 @@ from django.urls import reverse_lazy
 from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.http import HttpResponse
 from . import models
+from .filters import CaseFilter
+import requests
+from .models import Case
 class CaseListView(ListView):
     print("CaseView")
     context_object_name='case'
@@ -37,3 +40,20 @@ def add_amount(is_scholorship):
         #add amount 
         return True
     else: return False
+
+def case_filter(request):
+    cases = Case.objects.all()
+    f = CaseFilter(request.GET, queryset=Case.objects.filter(name='p'))
+    context = {'filter': f, }
+
+    '''
+    caseFilter = CaseFilter(queryset=cases)
+
+    if request.method == "POST":
+        caseFilter = CaseFilter(request.POST, queryset=cases)
+
+    context = {
+        'caseFilter': caseFilter
+    }
+    '''
+    return render(request, 'case_app/case_list.html', context)

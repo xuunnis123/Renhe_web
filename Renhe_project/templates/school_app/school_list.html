@@ -22,5 +22,14 @@
     {% endfor %}
 
 </table>
+<form action="" method="get">
+    {{ filter.form.as_p }}
+            <input type="submit" />
+        </form>
+<ul>
+{% for obj in filter.qs %}
+    <li>{{ obj.name }}, 測試: {{ obj.represent_person_name }}</li>
+{% endfor %}
+</ul>
 {% endblock %}
 

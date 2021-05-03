@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.views.generic import View,TemplateView,ListView,DetailView,CreateView,UpdateView,DeleteView
 from django.http import HttpResponse
 from . import models
+from .filters import SchoolFilter
 class SchoolListView(ListView):
     print("School")
     context_object_name='school'
@@ -32,3 +33,23 @@ class SchoolUpdateView(UpdateView):
 class SchoolDeleteView(DeleteView):
     model=models.School
     success_url= reverse_lazy("school_app:list")
+
+
+
+def school_filter(request):
+    school = models.School.objects.all()
+    
+    f = SchoolFilter(request.GET, queryset=models.School.objects.filter(name=''))
+    context = {'filter': f, }
+    print("context:",f)
+    '''
+    caseFilter = CaseFilter(queryset=cases)
+
+    if request.method == "POST":
+        caseFilter = CaseFilter(request.POST, queryset=cases)
+
+    context = {
+        'caseFilter': caseFilter
+    }
+    '''
+    return render(request, 'school_app/school_list.html', context)

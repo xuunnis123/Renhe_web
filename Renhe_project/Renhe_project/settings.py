@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'school_app',
     'index_app',
     'student_app',
+    'django_filters',
 
 ]
 
