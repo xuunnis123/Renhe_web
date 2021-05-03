@@ -38,7 +38,7 @@ class SchoolDeleteView(DeleteView):
 
 def school_filter(request):
     school = models.School.objects.all()
-    
+
     f = SchoolFilter(request.GET, queryset=models.School.objects.filter(name=''))
     context = {'filter': f, }
     print("context:",f)
