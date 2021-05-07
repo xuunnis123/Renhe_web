@@ -1,6 +1,14 @@
 {% extends "base.html"%}
 
 {% block body_block %}
+{% load django_bootstrap5 %}
+<form method="get" >
+    {{ filter.form.as_p }}
+    <button type="submit" class="btn btn-primary">Search</button>
+  </form>
+
+
+
 <h1>學校列表</h1>
 <table class="table">
 <thead class="table-dark">
@@ -10,7 +18,7 @@
         <th>備註</th>
        
 </thead>
-    {% for uni_school in school %}
+    {% for uni_school in filter.qs %}
     <tr>
         <td><a href="{% url 'school_app:detail' pk=uni_school.pk %}">{{ uni_school.name }}</a></td>
         <td>{{ uni_school.represent_person_name }}</td>
@@ -22,14 +30,6 @@
     {% endfor %}
 
 </table>
-<form action="" method="get">
-    {{ filter.form.as_p }}
-            <input type="submit" />
-        </form>
-<ul>
-{% for obj in filter.qs %}
-    <li>{{ obj.name }}, 測試: {{ obj.represent_person_name }}</li>
-{% endfor %}
-</ul>
+
 {% endblock %}
 

@@ -2,7 +2,7 @@ from .models import School
 import django_filters
 from django import forms
 class SchoolFilter(django_filters.FilterSet):
-    name = django_filters.CharFilter(field_name='name',lookup_expr='icontains', label="關鍵詞")
+    name = django_filters.CharFilter(field_name='name',lookup_expr='icontains', label="學校查詢")
     
     '''
     name = django_filters.CharFilter(

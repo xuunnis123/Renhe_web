@@ -7,12 +7,21 @@ from django.views.generic import View,TemplateView,ListView,DetailView,CreateVie
 from django.http import HttpResponse
 from . import models
 from .filters import SchoolFilter
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 class SchoolListView(ListView):
     print("School")
-    context_object_name='school'
+    #context_object_name='school'
     model= models.School
     template_name='school_app/school_list.html'
-
+    filterset_class = SchoolFilter
+    #paginate_by = 3
+    def get_queryset(self):
+        print("++++++")
+        qs = self.model.objects.all()
+        school_filtered_list = SchoolFilter(self.request.GET, queryset=qs)
+        print(school_filtered_list)
+        return school_filtered_list.qs
+    
 class SchoolDetailView(DetailView):
     
     context_object_name='school_detail'
@@ -37,19 +46,31 @@ class SchoolDeleteView(DeleteView):
 
 
 def school_filter(request):
-    school = models.School.objects.all()
+    print("shcool")
+    schools = models.School.objects.all()
 
-    f = SchoolFilter(request.GET, queryset=models.School.objects.filter(name=''))
-    context = {'filter': f, }
-    print("context:",f)
-    '''
-    caseFilter = CaseFilter(queryset=cases)
-
+    schoolFilter = SchoolFilter(queryset=schools)
+        
     if request.method == "POST":
-        caseFilter = CaseFilter(request.POST, queryset=cases)
-
+        schoolFilter = SchoolFilter(request.POST, queryset=schools)
+        
     context = {
-        'caseFilter': caseFilter
+        'schoolFilter': schoolFilter
     }
-    '''
+    return render(request, 'school_app/school_list.html', context)
+
+def school2_filter(request):
+    base_qs = models.School.objects.all().select_related('name')
+    f = SchoolFilter(request.GET, queryset=base_qs)
+    paginator = Paginator(f.qs, 5)
+    page = request.GET.get('page', 1)
+    try:
+        page_obj = paginator.page(page)
+    except PageNotAnInteger:
+        page_obj = paginator.page(1)
+    except EmptyPage:
+        page_obj = paginator.page(paginator.num_pages)
+    is_paginated = True if paginator.num_pages > 1 else False
+    context = {'page_obj': page_obj, 'paginator': paginator, 'is_paginated': is_paginated, 'filter': f, }
+
     return render(request, 'school_app/school_list.html', context)
