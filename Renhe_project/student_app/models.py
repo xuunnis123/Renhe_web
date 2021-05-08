@@ -8,6 +8,7 @@ class Student(models.Model):
     name=models.CharField(verbose_name="姓名",max_length=256)
     phone=models.CharField(verbose_name="電話",max_length=256)
     school=models.ForeignKey(School,related_name='school_student',on_delete=models.CASCADE,verbose_name="學校")
+    case_id=models.CharField(verbose_name="案號",max_length=256,default="無")
     #school = models.ForeignKey(School,on_delete=models.CASCADE,null=True, blank=True)
     address=models.CharField(verbose_name="地址",max_length=256)
     is_end=models.BooleanField(verbose_name="已結案",null=False,default=False)

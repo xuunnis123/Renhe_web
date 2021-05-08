@@ -1,3 +1,24 @@
+<title>嘉義縣仁合慈善會</title>
+<head>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+  
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <script>
+        $('#id_is_scholorship').click(function(){
+            alert("test");
+        });
+        
+    </script>
 {% extends "base.html"%}
 
 {% block body_block %}
@@ -20,7 +41,8 @@
                 {{ form.name.errors }}
                 <label for="{{ form.name.id_for_label }}" class="form-label">姓名</label>
                 {{ form.name }}
-                <button type="button" id="btn_addstudent" class="btn btn-primary">新增學生</button> 
+    
+                <a href="{% url 'student_app:create' %}" class="btn btn-primary">新增學生</a> 
             </div>
            
         </div>
@@ -30,7 +52,7 @@
                 {{ form.school.errors }}
                 <label for="{{ form.school.id_for_label }}" class="form-label">學校</label>
                 {{ form.school }}
-                <button type="button" id="btn_addschool" class="btn btn-primary">新增學校</button>
+                <a href="{% url 'school_app:create' %}" class="btn btn-primary">新增學校</a> 
             </div>
            
         </div>
@@ -58,7 +80,8 @@
             <div class="fieldWrapper">
                 {{ form.is_scholorship.errors }}
                 <label class="form-label">獎學金</label>
-                {{ form.is_scholorship }}   
+                 {{ form.is_scholorship }} 
+                
             </div>
            
         </div>
@@ -127,3 +150,5 @@
 </form>
 
 {% endblock%}
+
+</body>
