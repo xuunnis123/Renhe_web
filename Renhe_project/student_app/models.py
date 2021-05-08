@@ -2,10 +2,9 @@ from django.db import models
 
 from django.urls import reverse
 from school_app.models import School 
-from case_app.models import Case
+
 # Create your models here.
 class Student(models.Model):
-    case_id=models.ForeignKey(Case,related_name='case_student',on_delete=models.CASCADE,default="",verbose_name="個案編號")
     name=models.CharField(verbose_name="姓名",max_length=256)
     phone=models.CharField(verbose_name="電話",max_length=256)
     school=models.ForeignKey(School,related_name='school_student',on_delete=models.CASCADE,verbose_name="學校")

@@ -1,11 +1,14 @@
 from django.db import models
 from django.urls import reverse
 import datetime,time
+from school_app.models import School
+from student_app.models import Student
 # Create your models here.
 class Case(models.Model):
-    name=models.CharField(verbose_name="姓名",blank=False,max_length=256)
+    name=models.ForeignKey(Student,related_name='case_student_name',on_delete=models.CASCADE,verbose_name="姓名")
     phone=models.CharField(verbose_name="電話",blank=False,max_length=256)
-    school=models.CharField(verbose_name="學校",blank=False,max_length=256)
+    school=school=models.ForeignKey(School,related_name='case_school',on_delete=models.CASCADE,verbose_name="學校")
+
     contribute_context=models.TextField(verbose_name="資助項目",blank=False,max_length=256) #related from outcome
     is_scholorship=models.BooleanField(verbose_name="獎學金",default=False)
     scholorship_amount=models.IntegerField(verbose_name="獎學金金額",blank=True,default=0,null=True)

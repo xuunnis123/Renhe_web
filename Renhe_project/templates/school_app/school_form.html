@@ -13,6 +13,7 @@
 <form method="post">
     {% csrf_token %}
     {% bootstrap_form form %}
+  
     <input type="submit" class="btn btn-primary" value="提交"> 
     {% if not form.instance.pk %}
     <a class='btn btn-secondary' href="{% url 'school_app:list' %}">取消</a>
