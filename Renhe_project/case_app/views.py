@@ -40,8 +40,7 @@ class CaseCreateView(CreateView):
     fields=('name','phone','school','contribute_context','is_scholorship','scholorship_amount','total_money','situation','visited_form','visited_photos','start_date','end_date')
     model=models.Case
     success_url= reverse_lazy("case_app:list")
-    def form_valid(self, form):
-        return super().form_valid(form)
+    
 
 
 
