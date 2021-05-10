@@ -4,10 +4,6 @@
     <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
   
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
     
@@ -18,13 +14,40 @@
     
 
     {% block body_block %}
+    {% block jquery %}
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+    {% endblock %}
 <script>
-    function addField() {  
+    $(document).ready(function(){
+        function cal_total(){
+            //var $('#buffer_').val();
+            alert("test");
+    
+        }
+    });
+    function cal_total(){
+        //var $('#buffer_').val();
         
+        var buffer =parseInt($('#count').val());
+        
+        var total=0;
+        for(i=1;i<=buffer;i++){
+            total+=parseInt($('#col_'+i).val());
+        }
+        $('#total').val(total);
+    }
+    function addField() {  
+       var buffer =parseInt($('#count').val());
+       buffer+=1;
+       $('#count').val(buffer);
+       
        //document.getElementById("span1").innerHTML = document.getElementById("span1").innerHTML+ '<input type="text" name="T"><input type="text" name="amount">'+'<br>';    
-       document.getElementById("span1").innerHTML = document.getElementById("span1").innerHTML+'<div class="input-group mb-3">'+'<button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">項目</button>'+'<ul class="dropdown-menu">'+'<li><a class="dropdown-item" href="#">獎學金</a></li>'+'<li><a class="dropdown-item" href="#">生活費</a></li>'+'<li><a class="dropdown-item" href="#">交通費</a></li>'+'<li><hr class="dropdown-divider"></li>'+'<li><a class="dropdown-item" href="#">雜費</a></li>'+'</ul>'+'<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="請輸入金額">'+'</div>'+'<br/>'	;
+       document.getElementById("span1").innerHTML = document.getElementById("span1").innerHTML+'<div class="input-group mb-3">'+'<div class="input-group mb-3"><select class="form-select" id="inputGroupSelect02"><option selected>項目</option><option value="1">獎學金</option><option value="2">學雜費</option><option value="3">生活補貼</option><option value="4">雜項</option></select>'+'<input type="text" class="form-control" aria-label="Text input with dropdown button" placeholder="請輸入金額" onchange="cal_total()" id="col_'+buffer+'">'+'</div>'+'<br/>'	;
     
     }  
+    
 </script>
 <h1>{{ school}} | {{ student }}</h1>
     <h1>
@@ -39,14 +62,18 @@
             {% csrf_token %}   
             <span id="span1">
                 項目/金額<br/>
-            </span>  
+            </span>
+        <input type="hidden" id="count" name="count" value="0" />  
         <a href="javascript:" onclick="addField()" class="btn btn-primary">新增項目</a> 
         <a href="javascript:" onclick="#" class="btn btn-danger">減少項目</a>
         <hr/>
         <div class="container">
-            <div class="row justify-content-end">總計金額：{{total_money}} </div>
+            <div class="row justify-content-end">總計金額<input type="text" class="form-control" value="0" name="total" id="total" readonly> </div>
         
-    </div>  
+    </div>
+    
+        
+      </div>  
         <hr/>
         <p><input type="submit" value="儲存" class="btn btn-primary"> 
         <a class='btn btn-warning' href="{% url 'case_app:list' %}">取消</a></p>
