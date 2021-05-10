@@ -20,13 +20,13 @@ class StudentDetailView(DetailView):
 
 
 class StudentCreateView(CreateView):
-    fields=('case_id','name','phone','school','address','is_scholorship','content','is_end','start_date','end_date','memo','visit_form','visit_photo')
+    fields=('case_id','name','phone','school','address','is_scholorship','is_end','start_date','end_date','memo','visit_form','visit_photo')
     model=models.Student
     success_url= reverse_lazy("student_app:list")
   
 class StudentUpdateView(UpdateView):
     print("Update")
-    fields=('case_id','name','phone','school','address','is_scholorship','content','is_end','start_date','end_date','memo','visit_form','visit_photo')
+    fields=('case_id','name','phone','school','address','is_scholorship','is_end','start_date','end_date','memo','visit_form','visit_photo')
     model=models.Student
     success_url= reverse_lazy("student_app:list")
 class StudentDeleteView(DeleteView):

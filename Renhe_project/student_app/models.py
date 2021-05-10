@@ -12,7 +12,6 @@ class Student(models.Model):
     #school = models.ForeignKey(School,on_delete=models.CASCADE,null=True, blank=True)
     address=models.CharField(verbose_name="地址",max_length=256)
     is_scholorship=models.BooleanField(verbose_name="獎學金",null=False,default=False)
-    content=models.CharField(verbose_name="資助內容",max_length=256,default="無")
     is_end=models.BooleanField(verbose_name="已結案",null=False,default=False)
     start_date=models.DateField(verbose_name="個案開始日期",blank=False,default=datetime.datetime.today().strftime("%Y-%m-%d"))
     end_date=models.DateField(verbose_name="個案結束日期",blank=True,default=datetime.datetime.today().strftime("%Y-%m-%d"))

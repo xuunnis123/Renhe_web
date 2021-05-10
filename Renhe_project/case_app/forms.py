@@ -35,4 +35,5 @@ class CaseModelForm(forms.ModelForm):
 
         }
     
-    
+class SchoolForm(forms.Form):
+    school= forms.CharField(max_length=255)

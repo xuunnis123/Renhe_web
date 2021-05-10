@@ -8,8 +8,12 @@
     {{ filter.form.as_p }}
     <button type="submit" class="btn btn-primary">查詢</button>
   </form>
+  <a class='btn btn-danger' href="{% url 'case_app:create' %}">新增個案</a>
 </div>
-<br>
+
+<br/>
+
+<br/>
 <table class="table">
 <thead class="table-dark">
         <th>學生姓名</th>

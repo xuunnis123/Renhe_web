@@ -10,7 +10,10 @@ from . import models
 from .filters import CaseFilter
 import requests
 from .models import Case
-from .forms import CaseModelForm
+from finance_app.models import Finance
+from student_app.models import Student
+from school_app.models import School
+from .forms import CaseModelForm,SchoolForm
 class CaseListView(ListView):
     print("CaseView")
     context_object_name='case'
@@ -75,3 +78,41 @@ def case_filter(request):
     }
     '''
     return render(request, 'case_app/case_list.html', context)
+
+def case_register(request):
+    print("case_register")
+    school = School.objects.all()
+    student = Student.objects.all()
+    
+
+    context={'school':school, 
+            'student':student
+
+            }
+    return render(request,'case_app/case_register.html',context)
+
+def case_student(request):
+    print("case_student")
+    school_id=request.POST['school']
+    school_name=request.POST['school_name']
+    student=Student.objects.filter(school=school_id)
+    
+    print(student)
+    #f = CaseFilter(request.GET, queryset=Student.objects.filter(school=request.POST))
+    context={'school':school_name, 
+            "student":student
+            }
+    return render(request,'case_app/case_student.html',context)
+
+def case_student_finance(request):
+    print("case_finance")
+    school=request.POST['school']
+    student=request.POST['student']
+    context={'school':school,
+    'student':student}
+    return render(request,'case_app/case_finance.html',context)
+
+def case_save(request):
+    #save
+    context={'success':"success"}
+    return render(request,'case_app/case_list.html',context)
