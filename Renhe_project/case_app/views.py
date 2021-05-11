@@ -113,6 +113,7 @@ def case_student_finance(request):
     return render(request,'case_app/case_finance.html',context)
 
 def case_save(request):
-    #save
+    #save to model
+    
     context={'success':"success"}
     return render(request,'case_app/case_list.html',context)

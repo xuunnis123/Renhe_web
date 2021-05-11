@@ -1,7 +1,8 @@
-from .models import Case
+
 import django_filters
 from django import forms
-class CaseFilter(django_filters.FilterSet):
+from .models import Student
+class StudentFilter(django_filters.FilterSet):
     name = django_filters.CharFilter(field_name='name',lookup_expr='icontains', label="個案學生姓名查詢",widget=forms.TextInput(attrs={'class': 'form-control'}))
     '''
     name = django_filters.CharFilter(
@@ -18,5 +19,5 @@ class CaseFilter(django_filters.FilterSet):
     end_date
     '''
     class Meta:
-        model = Case
+        model = Student
         fields = ['name',]
